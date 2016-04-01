@@ -1,0 +1,24 @@
+{
+  "name": "toothpick",
+  "version": "1.0.0",
+  "description": "Doing the gross javascript things so you don't have to.",
+  "main": "toothpick.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qbunt/toothpick.js.git"
+  },
+  "keywords": [
+    "gross",
+    "javascript",
+    "utils"
+  ],
+  "author": "qbunt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qbunt/toothpick.js/issues"
+  },
+  "homepage": "https://github.com/qbunt/toothpick.js#readme"
+}

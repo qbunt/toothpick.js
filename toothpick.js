@@ -1,51 +1,54 @@
-var qbuntutils = (function () {
+var toothpick = (function () {
     /**
-     * If you absolutely have to, this properly escapes regex
-     * @param string
-     * @returns {XML|void}
+     * if you must, this returns escaped regex
+     * @method escapeRegExp
+     * @param str - input string
+     * @returns {string}
      */
-    escapeRegExp = function(string){
-        return string.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+    escapeRegExp = function(str) {
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
     };
 
     /**
      * Drops all non-alpha chars out of a string
-     * @param string
+     * @param str - input string
      * @returns {string}
      */
-    cleanNonAlphaChars = function(string){
-        return string.replace(/\W/g, '');
+    cleanNonAlphaChars = function(str) {
+        return str.replace(/\W/g, '');
     };
 
     /**
      * Generates a CSS friendly classname out of a regular string
-     * @param str
+     * @param str - input string
      * @returns {string}
      */
-    getClassFriendlyName = function(str){
+    getClassFriendlyName = function(str) {
         if (typeof str === 'string'){
             return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         }
     };
 
     /**
-     * Please only use this for good, this is truly not something you should do unless you have a sane reason
-     * @param bool
+     * Disables the right click button. Please don't be a terrible person and use this in a sane way.
+     * @param bool - whether or not you'd like to disable or not
      */
-    disableRightClick = function(bool){
-        if(bool){
+    disableRightClick = function(bool) {
+        var bool = bool || false;
+
+        if( bool === true ){
             document.oncontextmenu = document.body.oncontextmenu = function () {return false;}
-        }else{
+        } else {
             document.oncontextmenu = document.body.oncontextmenu = null;
         }
     };
 
     /**
-     *  corrects widows by dropping in a '&nbsp;' entity whenever it's needed.
-     * @param text
-     * @returns {Array}
+     *  corrects widows by dropping in a &nbsp; entity whenever it's needed.
+     * @param text - string of paragraph text
+     * @returns {string}
      */
-    correctWidows = function(text){
+    correctWidows = function(text) {
         var noWidows = text.split(" ");
         if (noWidows.length > 1) {
             noWidows[noWidows.length-2] += "&nbsp;" + noWidows[noWidows.length-1];
@@ -57,11 +60,11 @@ var qbuntutils = (function () {
 
     /**
      * ...sets a cookie.
-     * @param cookieName
-     * @param cookieVal
-     * @param expiration
+     * @param cookieName - cookie's name
+     * @param cookieVal - cookie's value
+     * @param expiration - cookie's expiration
      */
-    setCookie  =  function(cookieName, cookieVal, expiration){
+    setCookie = function(cookieName, cookieVal, expiration) {
         var d = new Date();
         d.setTime(d.getTime() + (expiration*24*60*60*1000));
         var expires = "expires="+d.toUTCString();
@@ -71,9 +74,9 @@ var qbuntutils = (function () {
     /**
      * gets that cookie of name 'cookieName' or cookies delimited with ';'
      * @param cookieName
-     * @returns {*}
+     * @returns {*} - the cookie
      */
-    getCookie = function(cookieName){
+    getCookie = function(cookieName) {
         var name = cookieName + "=";
         var cookieArray = document.cookie.split(';');
         for(var i=0; i<cookieArray.length; i++) {
@@ -86,15 +89,15 @@ var qbuntutils = (function () {
 
     /**
      * Clears a cookie by setting the cookie's expiration to epoch
-     * @param name
+     * @param cookieName - the full name of the cookie you're clearing
      */
-    clearCookie = function(name){
-        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    clearCookie = function(cookieName) {
+        document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     };
 
     /**
      * Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for anmations that need to happen arbitrarily on the page.
-     * @param el
+     * @param el - the element you'd like to get the absolute position of
      * @returns {{x: number, y: number}}
      */
     getAbsolutePosition = function (el) {
@@ -115,8 +118,8 @@ var qbuntutils = (function () {
     };
 
     /**
-     * Internal method for getTotalPosition
-     * @returns {{x: *, y: *}}
+     * Internal method for getTotalPosition NOTE: not accessible from outside the library itself
+     * @returns {{x: *, y: *}} - the X and Y position of the cookie
      */
     getScrollPositionOffset = function () {
         var doc = document, w = window;
@@ -158,12 +161,12 @@ var qbuntutils = (function () {
 
     /**
      * simple find and replace wrapper for strings
-     * @param find
-     * @param replace
-     * @param string
-     * @returns {XML|string|void}
+     * @param find - string value you'd like to find
+     * @param replace - string value you'd like to replace
+     * @param string - the string you'd like to search over
+     * @returns {string} - the output string
      */
-    replaceAll = function(find, replace, string){
+    replaceAll = function(find, replace, string) {
         return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
     };
 
@@ -180,5 +183,5 @@ var qbuntutils = (function () {
         getScrollPosition       : getScrollPosition,
         replaceAll              : replaceAll
     }
-    
+
 })();
