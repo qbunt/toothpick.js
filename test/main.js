@@ -1,6 +1,7 @@
 /**
  * Created by qbunt on 4/27/16.
  */
+
 describe('string manipulation', function () {
     it('should return a non alpha string', function () {
         var myString = "this is a cr@zy strin# m*n, shouldn>";
@@ -11,6 +12,10 @@ describe('string manipulation', function () {
     it('returns a class friendly name', function () {
         var camelString = "This is an example String";
         expect(toothpick.getClassFriendlyName(camelString)).not.toContain(" ,");
+
+        var puncString = "This is a string!";
+        expect(toothpick.getClassFriendlyName(puncString)).not.toContain("!");
+        expect(toothpick.getClassFriendlyName(puncString)).not.toContain(" ");
     });
 
     it('should be able to replace all in a string', function(){

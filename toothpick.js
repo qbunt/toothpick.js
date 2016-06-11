@@ -1,6 +1,5 @@
 (function (exports) {
-    var isNode = (typeof process !== 'undefined') &&
-        (process.release.name.search(/node|io.js/) !== -1);
+    var isNode = (typeof process !== 'undefined') && (process.release.name.search(/node|io.js/) !== -1);
 
     /**
      * if you must, this returns escaped regex

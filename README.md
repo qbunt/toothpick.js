@@ -6,6 +6,22 @@ This is like that.
 
 These are a collection of utils that I've used across several projects. There was a good reason for them at the time, like disabling the right click menu.
 
+### Usage
+
+Node:
+```
+var toothpick = require('toothpick');
+```
+
+Browser:
+```
+<script src="toothpick.js"></script>
+<script>
+    toothpick.getClassFriendlyName("This is a string!");
+    // returns 'this-is-a-string'
+</script>
+```
+
 ## API
 
 ### escapeRegExp(str) 
