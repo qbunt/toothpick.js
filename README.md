@@ -8,6 +8,7 @@ These are a collection of utils that I've used across several projects. There wa
 
 ### Usage
 
+
 Node:
 ```
 var toothpick = require('toothpick');
@@ -24,7 +25,7 @@ Browser:
 
 ## API
 
-### escapeRegExp(str) 
+### escapeRegExp(str)
 
 if you must, this returns escaped regex
 
@@ -35,7 +36,7 @@ if you must, this returns escaped regex
 **Returns**: `string`
 
 
-### cleanNonAlphaChars(str) 
+### cleanNonAlphaChars(str)
 
 Drops all non-alpha chars out of a string
 
@@ -46,7 +47,7 @@ Drops all non-alpha chars out of a string
 **Returns**: `string`
 
 
-### getClassFriendlyName(str) 
+### getClassFriendlyName(str)
 
 Generates a CSS friendly classname out of a regular string
 
@@ -57,7 +58,7 @@ Generates a CSS friendly classname out of a regular string
 **Returns**: `string`
 
 
-### disableRightClick(bool) 
+### disableRightClick(bool)
 
 Disables the right click button. Please don't be a terrible person and use this in a sane way.
 
@@ -67,7 +68,7 @@ Disables the right click button. Please don't be a terrible person and use this 
 
 
 
-### correctWidows(text) 
+### correctWidows(text)
 
 corrects widows by dropping in a &nbsp; entity whenever it's needed.
 
@@ -78,7 +79,7 @@ corrects widows by dropping in a &nbsp; entity whenever it's needed.
 **Returns**: `string`
 
 
-### setCookie(cookieName, cookieVal, expiration) 
+### setCookie(cookieName, cookieVal, expiration)
 
 ...sets a cookie.
 
@@ -92,7 +93,7 @@ corrects widows by dropping in a &nbsp; entity whenever it's needed.
 
 
 
-### getCookie(cookieName) 
+### getCookie(cookieName)
 
 gets that cookie of name 'cookieName' or cookies delimited with ';'
 
@@ -103,7 +104,7 @@ gets that cookie of name 'cookieName' or cookies delimited with ';'
 **Returns**: `*`, - the cookie
 
 
-### clearCookie(cookieName) 
+### clearCookie(cookieName)
 
 Clears a cookie by setting the cookie's expiration to epoch
 
@@ -113,7 +114,7 @@ Clears a cookie by setting the cookie's expiration to epoch
 
 
 
-### getAbsolutePosition(el) 
+### getAbsolutePosition(el)
 
 Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for anmations that need to happen arbitrarily on the page.
 
@@ -124,21 +125,21 @@ Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'.
 **Returns**: `Object`
 
 
-### getScrollPositionOffset() 
+### getScrollPositionOffset()
 
 Internal method for getTotalPosition NOTE: not accessible from outside the library itself
 
 **Returns**: `Object`, - the X and Y position of the cookie
 
 
-### getScrollPosition() 
+### getScrollPosition()
 
 accessor for the scroll x and scroll y position, patched for most browsers
 
 **Returns**: `Array`
 
 
-### replaceAll(find, replace, string) 
+### replaceAll(find, replace, string)
 
 simple find and replace wrapper for strings
 
@@ -151,4 +152,3 @@ simple find and replace wrapper for strings
 **string**: , the string you'd like to search over
 
 **Returns**: `string`, - the output string
-
