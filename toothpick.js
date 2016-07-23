@@ -8,7 +8,8 @@
      * @returns {string}
      */
 
-    exports.escapeRegExp = str => str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+    exports.escapeRegExp = str =>
+        str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
 
     /**
      * Drops all non-alpha chars out of a string
@@ -16,7 +17,8 @@
      * @returns {string}
      */
 
-    exports.cleanNonAlphaChars = str => str.replace(/\W/g, '');
+    exports.cleanNonAlphaChars = str =>
+        str.replace(/\W/g, '');
 
     /**
      * Generates a CSS friendly classname out of a regular string
@@ -24,10 +26,13 @@
      * @returns {string}
      */
     exports.getClassFriendlyName = str => {
-        if (typeof str === 'string') str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
+        if (typeof str === 'string')
+            str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         else
-            if(console) return console.error('this method requires a string input');
-            else return "";
+            if(console)
+                return console.error('this method requires a string input');
+            else
+                return "";
     };
 
     /**
@@ -38,8 +43,10 @@
         exports.disableRightClick = function(bool) {
             var bool = bool || false;
 
-            if( bool === true ) document.oncontextmenu = document.body.oncontextmenu = () => false;
-            else document.oncontextmenu = document.body.oncontextmenu = null;
+            if( bool === true )
+                document.oncontextmenu = document.body.oncontextmenu = () => false;
+            else
+                document.oncontextmenu = document.body.oncontextmenu = null;
 
         };
     }
@@ -81,7 +88,7 @@
     if(!isNode) {
         exports.getCookie = cookieName => {
             let name = cookieName + "=";
-            let cookieArray = document.cookie.split(';');
+            var cookieArray = document.cookie.split(';');
             for (var i = 0; i < cookieArray.length; i++) {
                 let c = cookieArray[i];
                 while (c.charAt(0) == ' ') c = c.substring(1);
@@ -95,18 +102,17 @@
      * Clears a cookie by setting the cookie's expiration to epoch
      * @param cookieName - the full name of the cookie you're clearing
      */
-    if(!isNode) {
+    if(!isNode)
         exports.clearCookie = cookieName => {
             document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         };
-    }
 
     /**
      * Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for animations that need to happen arbitrarily on the page.
      * @param el - the element you'd like to get the absolute position of
      * @returns {{x: number, y: number}}
      */
-    if(!isNode) {
+    if(!isNode)
         exports.getAbsolutePosition = el => {
             let sOff = getScrollPositionOffset(), left = 0, top = 0, props;
 
@@ -123,7 +129,7 @@
             }
             return {x: Math.round(left), y: Math.round(top)};
         };
-    }
+
 
     /**
      * Internal method for getTotalPosition NOTE: not accessible from outside the library itself
