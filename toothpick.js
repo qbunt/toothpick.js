@@ -24,13 +24,10 @@
      * @returns {string}
      */
     exports.getClassFriendlyName = (str) => {
-        if (typeof str === 'string'){
-            return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
-        } else {
-            if(console){
-                return "";
-            }
-        }
+        if (typeof str === 'string') str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
+        else
+            if(console) return console.error('this method requires a string input');
+            else return "";
     };
 
     /**
@@ -41,11 +38,9 @@
         exports.disableRightClick = function(bool) {
             var bool = bool || false;
 
-            if( bool === true ){
-                document.oncontextmenu = document.body.oncontextmenu = function () {return false;}
-            } else {
-                document.oncontextmenu = document.body.oncontextmenu = null;
-            }
+            if( bool === true ) document.oncontextmenu = document.body.oncontextmenu = () => false;
+            else document.oncontextmenu = document.body.oncontextmenu = null;
+
         };
     }
 
@@ -107,7 +102,7 @@
     }
 
     /**
-     * Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for anmations that need to happen arbitrarily on the page.
+     * Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for animations that need to happen arbitrarily on the page.
      * @param el - the element you'd like to get the absolute position of
      * @returns {{x: number, y: number}}
      */
@@ -136,8 +131,9 @@
      */
     if(!isNode) {
         exports.getScrollPositionOffset = () => {
-            let doc = document, w = window;
-            let x, y, docEl;
+            var doc = document;
+            var w = window;
+            var x, y, docEl;
 
             if (typeof w.pageYOffset === 'number') {
                 x = w.pageXOffset;
@@ -188,9 +184,8 @@
      * @param string - the string you'd like to search over
      * @returns {string} - the output string
      */
-    exports.replaceAll = (find, replace, string) =>
-        string.replace(
-            new RegExp(this.escapeRegExp(find), 'g')
-        , replace);
+    exports.replaceAll = function(find, replace, string) {
+        return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
+    }
 
 })(typeof exports === 'undefined'? this['toothpick']={}: exports);
