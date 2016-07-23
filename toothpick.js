@@ -8,7 +8,7 @@
      * @returns {string}
      */
 
-    exports.escapeRegExp = (str) => str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+    exports.escapeRegExp = str => str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
 
     /**
      * Drops all non-alpha chars out of a string
@@ -16,14 +16,14 @@
      * @returns {string}
      */
 
-    exports.cleanNonAlphaChars = (str) => str.replace(/\W/g, '');
+    exports.cleanNonAlphaChars = str => str.replace(/\W/g, '');
 
     /**
      * Generates a CSS friendly classname out of a regular string
      * @param str - input string
      * @returns {string}
      */
-    exports.getClassFriendlyName = (str) => {
+    exports.getClassFriendlyName = str => {
         if (typeof str === 'string') str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         else
             if(console) return console.error('this method requires a string input');
@@ -49,7 +49,7 @@
      * @param text - string of paragraph text
      * @returns {string}
      */
-    exports.correctWidows = (text) => {
+    exports.correctWidows = text => {
         let noWidows = text.split(" ");
         if (noWidows.length > 1) {
             noWidows[noWidows.length-2] += "&nbsp;" + noWidows[noWidows.length-1];
@@ -79,7 +79,7 @@
      * @returns {*} - the cookie
      */
     if(!isNode) {
-        exports.getCookie = (cookieName) => {
+        exports.getCookie = cookieName => {
             let name = cookieName + "=";
             let cookieArray = document.cookie.split(';');
             for (var i = 0; i < cookieArray.length; i++) {
@@ -96,7 +96,7 @@
      * @param cookieName - the full name of the cookie you're clearing
      */
     if(!isNode) {
-        exports.clearCookie = (cookieName) => {
+        exports.clearCookie = cookieName => {
             document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         };
     }
@@ -107,7 +107,7 @@
      * @returns {{x: number, y: number}}
      */
     if(!isNode) {
-        exports.getAbsolutePosition = (el) => {
+        exports.getAbsolutePosition = el => {
             let sOff = getScrollPositionOffset(), left = 0, top = 0, props;
 
             if (el.getBoundingClientRect) {
