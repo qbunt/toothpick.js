@@ -7,25 +7,23 @@
      * @param str - input string
      * @returns {string}
      */
-    exports.escapeRegExp = function(str) {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
-    };
+
+    exports.escapeRegExp = (str) => str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
 
     /**
      * Drops all non-alpha chars out of a string
      * @param str - input string
      * @returns {string}
      */
-    exports.cleanNonAlphaChars = function(str) {
-        return str.replace(/\W/g, '');
-    };
+
+    exports.cleanNonAlphaChars = (str) => str.replace(/\W/g, '');
 
     /**
      * Generates a CSS friendly classname out of a regular string
      * @param str - input string
      * @returns {string}
      */
-    exports.getClassFriendlyName = function(str) {
+    exports.getClassFriendlyName = (str) => {
         if (typeof str === 'string'){
             return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         }
@@ -52,8 +50,8 @@
      * @param text - string of paragraph text
      * @returns {string}
      */
-    exports.correctWidows = function(text) {
-        var noWidows = text.split(" ");
+    exports.correctWidows = (text) => {
+        let noWidows = text.split(" ");
         if (noWidows.length > 1) {
             noWidows[noWidows.length-2] += "&nbsp;" + noWidows[noWidows.length-1];
             noWidows.pop();
@@ -69,10 +67,10 @@
      * @param expiration - cookie's expiration
      */
     if(!isNode){
-        exports.setCookie = function(cookieName, cookieVal, expiration) {
-            var d = new Date();
+        exports.setCookie = (cookieName, cookieVal, expiration) => {
+            let d = new Date();
             d.setTime(d.getTime() + (expiration*24*60*60*1000));
-            var expires = "expires="+d.toUTCString();
+            let expires = "expires="+d.toUTCString();
             document.cookie = cookieName + "=" + cookieVal + "; " + expires;
         };
     }
@@ -82,11 +80,11 @@
      * @returns {*} - the cookie
      */
     if(!isNode) {
-        exports.getCookie = function (cookieName) {
-            var name = cookieName + "=";
-            var cookieArray = document.cookie.split(';');
+        exports.getCookie = (cookieName) => {
+            let name = cookieName + "=";
+            let cookieArray = document.cookie.split(';');
             for (var i = 0; i < cookieArray.length; i++) {
-                var c = cookieArray[i];
+                let c = cookieArray[i];
                 while (c.charAt(0) == ' ') c = c.substring(1);
                 if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
             }
@@ -99,7 +97,7 @@
      * @param cookieName - the full name of the cookie you're clearing
      */
     if(!isNode) {
-        exports.clearCookie = function (cookieName) {
+        exports.clearCookie = (cookieName) => {
             document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         };
     }
@@ -110,8 +108,8 @@
      * @returns {{x: number, y: number}}
      */
     if(!isNode) {
-        exports.getAbsolutePosition = function (el) {
-            var sOff = getScrollPositionOffset(), left = 0, top = 0, props;
+        exports.getAbsolutePosition = (el) => {
+            let sOff = getScrollPositionOffset(), left = 0, top = 0, props;
 
             if (el.getBoundingClientRect) {
                 props = el.getBoundingClientRect();
@@ -133,7 +131,7 @@
      * @returns {{x: *, y: *}} - the X and Y position of the cookie
      */
     if(!isNode) {
-        exports.getScrollPositionOffset = function () {
+        exports.getScrollPositionOffset = () => {
             var doc = document, w = window;
             var x, y, docEl;
 
@@ -154,8 +152,8 @@
      * accessor for the scroll x and scroll y position, patched for most browsers
      * @returns {Array}
      */
-    exports.getScrollPosition = function() {
-        var x = 0, y = 0;
+    exports.getScrollPosition = () => {
+        let x = 0, y = 0;
         if( typeof( window.pageYOffset ) == 'number' ) {
             // Netscape
             x = window.pageXOffset;
@@ -179,8 +177,9 @@
      * @param string - the string you'd like to search over
      * @returns {string} - the output string
      */
-    exports.replaceAll = function(find, replace, string) {
-        return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
-    };
+    exports.replaceAll = (find, replace, string) =>
+        string.replace(
+            new RegExp(this.escapeRegExp(find), 'g')
+        , replace);
 
 })(typeof exports === 'undefined'? this['toothpick']={}: exports);
