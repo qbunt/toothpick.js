@@ -26,6 +26,10 @@
     exports.getClassFriendlyName = (str) => {
         if (typeof str === 'string'){
             return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
+        } else {
+            if(console){
+                return "";
+            }
         }
     };
 
@@ -132,8 +136,8 @@
      */
     if(!isNode) {
         exports.getScrollPositionOffset = () => {
-            var doc = document, w = window;
-            var x, y, docEl;
+            let doc = document, w = window;
+            let x, y, docEl;
 
             if (typeof w.pageYOffset === 'number') {
                 x = w.pageXOffset;
@@ -154,18 +158,25 @@
      */
     exports.getScrollPosition = () => {
         let x = 0, y = 0;
+
+        // these are all for convenience
+        let deTop = document.documentElement.scrollTop;
+        let deLeft = document.documentElement.scrollLeft;
+        let bodyLeft = document.body.scrollLeft;
+        let bodyTop = document.body.scrollTop;
+
         if( typeof( window.pageYOffset ) == 'number' ) {
             // Netscape
             x = window.pageXOffset;
             y = window.pageYOffset;
-        } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+        } else if( document.body && ( bodyLeft || bodyTop ) ) {
             // DOM
-            x = document.body.scrollLeft;
-            y = document.body.scrollTop;
-        } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+            x = bodyLeft;
+            y = bodyTop;
+        } else if( document.documentElement && ( deLeft || deTop ) ) {
             // IE6 standards compliant mode
-            x = document.documentElement.scrollLeft;
-            y = document.documentElement.scrollTop;
+            x = deLeft;
+            y = deTop;
         }
         return [x, y];
     };
