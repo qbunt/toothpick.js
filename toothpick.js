@@ -2,21 +2,19 @@
     var isNode = (typeof process !== 'undefined') && (process.release.name.search(/node|io.js/) !== -1);
 
     /**
-     * if you must, this returns escaped regex
+     * this returns escaped regex if you really have to
      * @method escapeRegExp
      * @param str - input string
      * @returns {string}
      */
-
     exports.escapeRegExp = str =>
         str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
 
     /**
-     * Drops all non-alpha chars out of a string
+     * Drops all non-alphanumeric chars out of a string
      * @param str - input string
      * @returns {string}
      */
-
     exports.cleanNonAlphaChars = str =>
         str.replace(/\W/g, '');
 
