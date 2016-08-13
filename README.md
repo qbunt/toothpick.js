@@ -1,12 +1,9 @@
+## Toothpick.js
 
 
 [![dependencies](https://david-dm.org/qbunt/toothpick.js.svg) ](https://david-dm.org/)
 
 [![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
-
-
-
-## Toothpick.js
 
 Y'know when you have something between your teeth and literally the only way to get it the hell out of there is with a toothpick?
 
