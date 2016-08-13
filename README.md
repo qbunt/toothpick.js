@@ -9,8 +9,7 @@ Y'know when you have something between your teeth and literally the only way to 
 
 This is like that.
 
-These are a collection of utils that I've used across several projects. There was a good reason for them at the time, like disabling the right click menu.
-
+These are a collection of utils that I've used across several projects. There was a good reason for them at the time, like disabling the right click menu. Don't do terrible things with them.
 
 ### Usage
 
