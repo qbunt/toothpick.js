@@ -35,3 +35,21 @@ describe('cookie access', function () {
         expect(toothpick.getCookie("testCookie")).toBe("");
     });
 });
+
+describe('percentage should work with a variety of values', ()=>{
+
+    it('should return a string containing a percentage', ()=>{
+        expect(toothpick.toPerc(getRandNum(1,500), getRandNum(501,1000))).toContain('%')
+    });
+    it('should accept a string returning a string', ()=>{
+        expect(typeof toothpick.toPerc(getRandNum(1,500).toString(), getRandNum(501,1000))).toBe('string')
+    });
+    it('should calculate the appropriate value', ()=>{
+        expect(toothpick.toPerc("75", 300)).toBe('25%')
+    });
+});
+
+
+function getRandNum(min, max) {
+    return Math.random() * (max - min) + min;
+}

@@ -151,6 +151,26 @@
             return {x: x, y: y};
         };
     }
+    /**
+     * joins the current path with the directory name
+     * @param path
+     */
+    if(isNode){
+        exports.joinPath = path => require('path').join(__dirname, path);
+    }
+
+    /**
+     * flattens a deeply nested array
+     * @param arr
+     */
+    exports.flatten = arr => Array.isArray(arr) ? [].concat(...arr.map(flatten)) : arr;
+
+    /**
+     * returns a percentage string based on the portion & whole input
+     * @param portion
+     * @param whole
+     */
+    exports.toPerc = (portion, whole) => `${Math.round(portion * 100 / whole)}%`;
 
     /**
      * accessor for the scroll x and scroll y position, patched for most browsers
