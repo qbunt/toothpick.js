@@ -3,6 +3,9 @@
   "version": "1.2.0",
   "description": "Doing the gross javascript things so you don't have to.",
   "main": "toothpick.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "karma start karma.conf.js",
     "ci": "karma start karma.conf.js --single-run --browsers PhantomJS",
