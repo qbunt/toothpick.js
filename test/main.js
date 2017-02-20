@@ -11,7 +11,7 @@ describe('string manipulation', function () {
 
     it('returns a class friendly name', function () {
         var camelString = "This is an example String";
-        expect(toothpick.getClassFriendlyName(camelString)).not.toContain(" ,");
+        expect(toothpick.getClassFriendlyName(camelString)).not.toContain(" ,"  );
 
         var puncString = "This is a string!";
         expect(toothpick.getClassFriendlyName(puncString)).not.toContain("!");
@@ -36,15 +36,15 @@ describe('cookie access', function () {
     });
 });
 
-describe('percentage should work with a variety of values', ()=>{
+describe('percentage should work with a variety of values', function (){
 
-    it('should return a string containing a percentage', ()=>{
+    it('should return a string containing a percentage', function(){
         expect(toothpick.toPerc(getRandNum(1,500), getRandNum(501,1000))).toContain('%')
     });
-    it('should accept a string returning a string', ()=>{
+    it('should accept a string returning a string', function(){
         expect(typeof toothpick.toPerc(getRandNum(1,500).toString(), getRandNum(501,1000))).toBe('string')
     });
-    it('should calculate the appropriate value', ()=>{
+    it('should calculate the appropriate value', function(){
         expect(toothpick.toPerc("75", 300)).toBe('25%')
     });
 });

@@ -1,3 +1,12 @@
+var toothpick = function() {
+}
+
+toothpick.noConflict = function() {
+  root.toothpick = toothpick
+  return toothpick
+}
+
+
 (function (exports) {
     var isNode = (typeof process !== 'undefined') && (process.release.name.search(/node|io.js/) !== -1);
 
@@ -15,8 +24,8 @@
      * @param str - input string
      * @returns {string}
      */
-    exports.cleanNonAlphaChars = str =>
-        str.replace(/\W/g, '');
+    exports.cleanNonAlphaChars = str => str.replace(/\W/g, '');
+
 
     /**
      * Generates a CSS friendly classname out of a regular string
