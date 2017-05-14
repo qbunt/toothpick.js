@@ -1,13 +1,6 @@
 'use strict';
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var toothpick = function toothpick() {};
-
-toothpick.noConflict = function () {
-    root.toothpick = toothpick;
-    return toothpick;
-}(function (exports) {
+(function (exports) {
     var isNode = typeof process !== 'undefined' && process.release.name.search(/node|io.js/) !== -1;
 
     /**
@@ -35,7 +28,15 @@ toothpick.noConflict = function () {
      * @returns {string}
      */
     exports.getClassFriendlyName = function (str) {
-        if (typeof str === 'string') str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();else if (console) return console.error('this method requires a string input');else return "";
+        if (typeof str === 'string') {
+            str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
+        } else {
+            if (console) {
+                return console.error('this method requires a string input');
+            } else {
+                return "";
+            }
+        }
     };
 
     /**
@@ -46,9 +47,14 @@ toothpick.noConflict = function () {
         exports.disableRightClick = function (bool) {
             var bool = bool || false;
 
-            if (bool === true) document.oncontextmenu = document.body.oncontextmenu = function () {
-                return false;
-            };else document.oncontextmenu = document.body.oncontextmenu = null;
+            if (bool === true) {
+                document.oncontextmenu = document.body.oncontextmenu = function () {
+                    return;
+                    false;
+                };
+            } else {
+                document.oncontextmenu = document.body.oncontextmenu = null;
+            }
         };
     }
 
@@ -117,7 +123,7 @@ toothpick.noConflict = function () {
         var sOff = getScrollPositionOffset(),
             left = 0,
             top = 0,
-            props = void 0;
+            props;
 
         if (el.getBoundingClientRect) {
             props = el.getBoundingClientRect();
@@ -160,7 +166,7 @@ toothpick.noConflict = function () {
      */
     if (isNode) {
         exports.joinPath = function (path) {
-            return require('path').join(__dirname, path);
+            require('path').join(__dirname, path);
         };
     }
 
@@ -169,9 +175,7 @@ toothpick.noConflict = function () {
      * @param arr
      */
     exports.flatten = function (arr) {
-        var _ref;
-
-        return Array.isArray(arr) ? (_ref = []).concat.apply(_ref, _toConsumableArray(arr.map(flatten))) : arr;
+        Array.isArray(arr) ? [].concat(arr.map(flatten)) : arr;
     };
 
     /**
@@ -180,7 +184,7 @@ toothpick.noConflict = function () {
      * @param whole
      */
     exports.toPerc = function (portion, whole) {
-        return Math.round(portion * 100 / whole) + '%';
+        return Math.round(portion * 100 / whole) + "%";
     };
 
     /**

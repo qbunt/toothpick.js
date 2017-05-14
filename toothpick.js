@@ -1,13 +1,5 @@
-var toothpick = function() {
-}
 
-toothpick.noConflict = function() {
-  root.toothpick = toothpick
-  return toothpick
-}
-
-
-(function (exports) {
+(function(exports) {
     var isNode = (typeof process !== 'undefined') && (process.release.name.search(/node|io.js/) !== -1);
 
     /**
@@ -16,30 +8,34 @@ toothpick.noConflict = function() {
      * @param str - input string
      * @returns {string}
      */
-    exports.escapeRegExp = str =>
-        str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+    exports.escapeRegExp = function(str) {
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+    }
 
     /**
      * Drops all non-alphanumeric chars out of a string
      * @param str - input string
      * @returns {string}
      */
-    exports.cleanNonAlphaChars = str => str.replace(/\W/g, '');
-
+    exports.cleanNonAlphaChars = function (str) {
+        return str.replace(/\W/g, '');
+    }
 
     /**
      * Generates a CSS friendly classname out of a regular string
      * @param str - input string
      * @returns {string}
      */
-    exports.getClassFriendlyName = str => {
-        if (typeof str === 'string')
+    exports.getClassFriendlyName = function(str) {
+        if (typeof str === 'string'){
             str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
-        else
-            if(console)
+        } else {
+            if (console) {
                 return console.error('this method requires a string input');
-            else
+            } else {
                 return "";
+            }
+        }
     };
 
     /**
@@ -50,10 +46,14 @@ toothpick.noConflict = function() {
         exports.disableRightClick = function(bool) {
             var bool = bool || false;
 
-            if( bool === true )
-                document.oncontextmenu = document.body.oncontextmenu = () => false;
-            else
+            if( bool === true ) {
+                document.oncontextmenu = document.body.oncontextmenu = function(){
+                    return
+                    false;
+                }
+            } else {
                 document.oncontextmenu = document.body.oncontextmenu = null;
+            }
 
         };
     }
@@ -63,8 +63,8 @@ toothpick.noConflict = function() {
      * @param text - string of paragraph text
      * @returns {string}
      */
-    exports.correctWidows = text => {
-        let noWidows = text.split(" ");
+    exports.correctWidows = function(text) {
+        var noWidows = text.split(" ");
         if (noWidows.length > 1) {
             noWidows[noWidows.length-2] += "&nbsp;" + noWidows[noWidows.length-1];
             noWidows.pop();
@@ -80,10 +80,10 @@ toothpick.noConflict = function() {
      * @param expiration - cookie's expiration
      */
     if(!isNode){
-        exports.setCookie = (cookieName, cookieVal, expiration) => {
-            let d = new Date();
+        exports.setCookie = function(cookieName, cookieVal, expiration) {
+            var d = new Date();
             d.setTime(d.getTime() + (expiration*24*60*60*1000));
-            let expires = "expires="+d.toUTCString();
+            var expires = "expires="+d.toUTCString();
             document.cookie = cookieName + "=" + cookieVal + "; " + expires;
         };
     }
@@ -93,11 +93,11 @@ toothpick.noConflict = function() {
      * @returns {*} - the cookie
      */
     if(!isNode) {
-        exports.getCookie = cookieName => {
-            let name = cookieName + "=";
+        exports.getCookie = function(cookieName) {
+            var name = cookieName + "=";
             var cookieArray = document.cookie.split(';');
             for (var i = 0; i < cookieArray.length; i++) {
-                let c = cookieArray[i];
+                var c = cookieArray[i];
                 while (c.charAt(0) == ' ') c = c.substring(1);
                 if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
             }
@@ -110,7 +110,7 @@ toothpick.noConflict = function() {
      * @param cookieName - the full name of the cookie you're clearing
      */
     if(!isNode)
-        exports.clearCookie = cookieName => {
+        exports.clearCookie = function(cookieName) {
             document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         };
 
@@ -120,8 +120,8 @@ toothpick.noConflict = function() {
      * @returns {{x: number, y: number}}
      */
     if(!isNode)
-        exports.getAbsolutePosition = el => {
-            let sOff = getScrollPositionOffset(), left = 0, top = 0, props;
+        exports.getAbsolutePosition = function(el) {
+            var sOff = getScrollPositionOffset(), left = 0, top = 0, props;
 
             if (el.getBoundingClientRect) {
                 props = el.getBoundingClientRect();
@@ -143,7 +143,7 @@ toothpick.noConflict = function() {
      * @returns {{x: *, y: *}} - the X and Y position of the cookie
      */
     if(!isNode) {
-        exports.getScrollPositionOffset = () => {
+        exports.getScrollPositionOffset = function(){
             var doc = document;
             var w = window;
             var x, y, docEl;
@@ -165,34 +165,40 @@ toothpick.noConflict = function() {
      * @param path
      */
     if(isNode){
-        exports.joinPath = path => require('path').join(__dirname, path);
+        exports.joinPath = function(path){
+            require('path').join(__dirname, path);
+        }
     }
 
     /**
      * flattens a deeply nested array
      * @param arr
      */
-    exports.flatten = arr => Array.isArray(arr) ? [].concat(...arr.map(flatten)) : arr;
+    exports.flatten = function(arr){
+        Array.isArray(arr) ? [].concat(arr.map(flatten)) : arr;
+    }
 
     /**
      * returns a percentage string based on the portion & whole input
      * @param portion
      * @param whole
      */
-    exports.toPerc = (portion, whole) => `${Math.round(portion * 100 / whole)}%`;
+    exports.toPerc = function(portion, whole){
+        return Math.round(portion * 100 / whole) + "%"
+    }
 
     /**
      * accessor for the scroll x and scroll y position, patched for most browsers
      * @returns {Array}
      */
-    exports.getScrollPosition = () => {
-        let x = 0, y = 0;
+    exports.getScrollPosition = function(){
+        var x = 0, y = 0;
 
         // these are all for convenience
-        let deTop = document.documentElement.scrollTop;
-        let deLeft = document.documentElement.scrollLeft;
-        let bodyLeft = document.body.scrollLeft;
-        let bodyTop = document.body.scrollTop;
+        var deTop = document.documentElement.scrollTop;
+        var deLeft = document.documentElement.scrollLeft;
+        var bodyLeft = document.body.scrollLeft;
+        var bodyTop = document.body.scrollTop;
 
         if( typeof( window.pageYOffset ) == 'number' ) {
             // Netscape
@@ -217,7 +223,7 @@ toothpick.noConflict = function() {
      * @param string - the string you'd like to search over
      * @returns {string} - the output string
      */
-    exports.replaceAll = function(find, replace, string) {
+    exports.replaceAll = function(find, replace, string){
         return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
     }
 
