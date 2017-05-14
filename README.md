@@ -3,6 +3,11 @@
 
 [![dependencies](https://david-dm.org/qbunt/toothpick.js.svg) ](https://david-dm.org/)
 
+[![Build Status](https://travis-ci.org/qbunt/toothpick.js.svg?branch=master)](https://travis-ci.org/qbunt/toothpick.js)
+
+[![codecov](https://codecov.io/gh/qbunt/toothpick.js/branch/master/graph/badge.svg)](https://codecov.io/gh/qbunt/toothpick.js)
+
+
 [![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
 
 Y'know when you have something between your teeth and literally the only way to get it the hell out of there is with a toothpick?
