@@ -9,7 +9,7 @@
   "scripts": {
     "test": "karma start karma.conf.js",
     "ci": "karma start karma.conf.js --single-run --browsers PhantomJS",
-    "codecov": "cat coverage/*/lcov.info | codecov"
+    "codecov": "cat coverage/*/lcov.info | codecov -t 141203a1-566d-437a-9cff-7c019d2b4d86"
   },
   "repository": {
     "type": "git",
