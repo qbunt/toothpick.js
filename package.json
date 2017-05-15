@@ -9,7 +9,7 @@
   "scripts": {
     "test": "istanbul cover -x *.test.js _mocha -- -R spec test/main.test.js",
     "ci": "npm run test",
-    "codecov": "cat coverage/*/lcov.info | codecov",
+    "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "repository": {
     "type": "git",
