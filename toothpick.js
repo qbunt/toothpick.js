@@ -9,7 +9,7 @@
      * @returns {string}
      */
     exports.escapeRegExp = function(str) {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
+        return String(str).replace(/[\-\[\]\/\{\}\(\)\*\+\.\\\^\$\|]/g, "\\$&");
     }
 
     /**
@@ -31,7 +31,8 @@
             return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         } else {
             if (console) {
-                return console.error('this method requires a string input');
+                var err = new Error('Input of type string is required');
+                throw err;
             } else {
                 return "";
             }
@@ -64,7 +65,7 @@
      * @returns {string}
      */
     exports.correctWidows = function(text) {
-        var noWidows = text.split(" ");
+        var noWidows = String(text).split(" ");
         if (noWidows.length > 1) {
             noWidows[noWidows.length-2] += "&nbsp;" + noWidows[noWidows.length-1];
             noWidows.pop();

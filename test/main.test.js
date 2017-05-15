@@ -7,6 +7,13 @@ var should = chai.should();
 var expect = require('chai').expect
 var toothpick = require('../toothpick')
 
+describe('should escape regex properly', ()=>{
+    it('should not return the same string',()=>{
+        var exp = '/#?([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})/g';
+        expect(toothpick.escapeRegExp(exp).length).not.to.equal(exp.length)
+    })
+})
+
 describe('string manipulation', () =>{
     it('should return a non alpha string', () =>{
         var myString = "this is a cr@zy strin# m*n, shouldn>";
@@ -23,10 +30,21 @@ describe('string manipulation', () =>{
         expect(toothpick.getClassFriendlyName(puncString)).not.to.contain(" ");
     });
 
+    it('returns an error when passed a non-string', ()=>{
+        expect(()=>{
+            var myThing = toothpick.getClassFriendlyName({"test":'test'})
+        }).to.throw(Error);
+    })
+
     it('should be able to replace all in a string', () =>{
         var myString = "this is my is dream sometimes is just is whatever bro";
         expect(toothpick.replaceAll('is', '', myString)).not.to.contain(('is'))
     });
+
+    it('corrects the widows',()=>{
+        var lorem = require('./helpers')
+        expect(toothpick.correctWidows(lorem)).to.contain('&nbsp;')
+    })
 });
 //
 // describe('cookie access', function () {
