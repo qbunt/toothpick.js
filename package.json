@@ -1,15 +1,13 @@
 {
   "name": "toothpick",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Doing the gross javascript things so you don't have to.",
   "main": "toothpick.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "karma start karma.conf.js",
-    "ci": "karma start karma.conf.js --single-run --browsers PhantomJS",
-    "codecov": "cat coverage/*/lcov.info | codecov -t 141203a1-566d-437a-9cff-7c019d2b4d86"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -31,13 +29,8 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
     "codecov": "^2.2.0",
-    "jasmine": "^2.5.1",
-    "jasmine-node": "^1.14.5",
-    "karma": "^1.3.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "^1.0.2"
+    "mocha": "^3.4.1"
   }
 }
