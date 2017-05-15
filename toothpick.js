@@ -28,7 +28,7 @@
      */
     exports.getClassFriendlyName = function(str) {
         if (typeof str === 'string'){
-            str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
+            return str.replace(/[^\w\s]/gi, '').replace(/[^\w]/gi, '-').toLowerCase();
         } else {
             if (console) {
                 return console.error('this method requires a string input');
@@ -164,19 +164,15 @@
      * joins the current path with the directory name
      * @param path
      */
-    if(isNode){
-        exports.joinPath = function(path){
-            require('path').join(__dirname, path);
-        }
+    exports.joinPath = function(path){
+        return require('path').join(__dirname, path);
     }
 
     /**
      * flattens a deeply nested array
      * @param arr
      */
-    exports.flatten = function(arr){
-        Array.isArray(arr) ? [].concat(arr.map(flatten)) : arr;
-    }
+    exports.flatten = arr => Array.isArray(arr) ? [].concat(...arr.map(exports.flatten)) : arr;
 
     /**
      * returns a percentage string based on the portion & whole input
