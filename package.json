@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "ci":"npm run test"
+    "ci": "npm run test",
+    "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "repository": {
     "type": "git",
