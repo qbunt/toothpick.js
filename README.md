@@ -5,6 +5,8 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fqbunt%2Ftoothpick.js.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fqbunt%2Ftoothpick.js?ref=badge_shield)
+
 Y'know when you have something between your teeth and literally the only way to get it the hell out of there is with a toothpick?
 
 This is like that.
