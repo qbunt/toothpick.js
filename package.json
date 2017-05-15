@@ -7,9 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "istanbul cover -x *.test.js _mocha -- -R spec test/main.test.js",
     "ci": "npm run test",
-    "codecov": "cat coverage/*/lcov.info | codecov"
+    "codecov": "cat coverage/*/lcov.info | codecov",
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "babel-preset-es2015": "^6.22.0",
     "chai": "^3.5.0",
     "codecov": "^2.2.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.4.1"
   }
 }
