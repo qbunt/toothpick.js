@@ -35,7 +35,7 @@
      * @param bool - whether or not you'd like to disable or not
      */
     if(!isNode){
-        exports.disableRightClick = function(bool) {
+        exports.disableRightClick = bool =>{
             var bool = bool || false;
 
             if( bool === true ) document.oncontextmenu = document.body.oncontextmenu = () => false;
@@ -187,5 +187,17 @@
     exports.replaceAll = function(find, replace, string) {
         return string.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
     }
+    
+    /**
+     * replacement for terrible 'smart quotes' foisted by MS
+     * @param str
+     */
+    exports.replaceSmartQuotes = str => str.replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"')
+    
+    /**
+     * title case equivalent for strings
+     * @param str
+     */
+    exports.toTitleCase = str => str.replace(/\w+/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
 
 })(typeof exports === 'undefined'? this['toothpick']={}: exports);

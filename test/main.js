@@ -35,3 +35,4 @@ describe('cookie access', function () {
         expect(toothpick.getCookie("testCookie")).toBe("");
     });
 });
+
