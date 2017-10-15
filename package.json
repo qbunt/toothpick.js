@@ -29,11 +29,11 @@
   },
   "homepage": "https://github.com/qbunt/toothpick.js#readme",
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
-    "codecov": "^2.2.0",
+    "codecov": "^2.3.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.4.1"
+    "mocha": "^3.5.3"
   }
 }
