@@ -22,6 +22,12 @@ describe('string manipulation', function () {
         var myString = "this is my is dream sometimes is just is whatever bro";
         expect(toothpick.replaceAll('is', '', myString)).not.toContain(('is'))
     });
+
+    it('should return a title case string', function () {
+        var myString = "i'm a loser"
+        console.log(faker.random.words())
+        expect(toothpick.toTitleCase(myString)).toBe("I'm A Loser")
+    })
 });
 
 describe('cookie access', function () {

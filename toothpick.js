@@ -102,7 +102,8 @@
     }
 
     /**
-     * Returns the 'top' and 'left' css value for any element passed in as 'x' and 'y'. Useful for animations that need to happen arbitrarily on the page.
+     * Returns the 'top' and 'left' css value for any element passed in as
+     * 'x' and 'y'. Useful for animations that need to happen arbitrarily on the page.
      * @param el - the element you'd like to get the absolute position of
      * @returns {{x: number, y: number}}
      */
@@ -198,6 +199,13 @@
      * title case equivalent for strings
      * @param str
      */
-    exports.toTitleCase = str => str.replace(/\w+/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.substring(1, str.length).toLowerCase();
+    }
+
+    exports.toTitleCase = function(str) {
+        return str.replace(/[^\ \/\-\_]+/g, capitalize);
+    }
 
 })(typeof exports === 'undefined'? this['toothpick']={}: exports);

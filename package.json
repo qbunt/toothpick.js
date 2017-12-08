@@ -25,6 +25,10 @@
   "homepage": "https://github.com/qbunt/toothpick.js#readme",
   "devDependencies": {
     "jasmine": "^2.4.1",
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "^1.14.5",
+    "karma-faker": "^1.1.0"
+  },
+  "dependencies": {
+    "sinon": "^4.0.0"
   }
 }
