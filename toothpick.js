@@ -43,7 +43,11 @@
 
         };
     }
-
+    /**
+    * gets the named parameter in the URL (meant as a fallback for more modern APIs)
+    * @param name - named query parameter you'd like
+    * @returns {string}
+    */
     if(!isNode){
         exports.getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
