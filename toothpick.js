@@ -44,6 +44,15 @@
         };
     }
 
+    if(!isNode){
+        exports.getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+    }
+    
     /**
      *  corrects widows by dropping in a &nbsp; entity whenever it's needed.
      * @param text - string of paragraph text
