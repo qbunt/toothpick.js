@@ -1,6 +1,6 @@
 {
   "name": "toothpick",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Doing the gross javascript things so you don't have to.",
   "main": "toothpick.js",
   "directories": {
